@@ -45,10 +45,7 @@ public class Tower extends LiveBlock{
             context.strokeLine(
                     x, y, targetEnemy.x, targetEnemy.y
             );
-
         }
-
-
     }
 
     @Override

@@ -19,7 +19,6 @@ public class Enemy extends LiveBlock{
     }
 
 
-
     @Override
     void Render(GraphicsContext context) {
         context.setFill(Color.RED);

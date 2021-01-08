@@ -28,6 +28,7 @@ public class Controller implements Initializable {
 
     double timeFromLastEnemyCreate = 0;
     double enemyCreateRate = 1;
+    int totalEnemies = 0;
     int score = 500;
 
     @Override
@@ -43,10 +44,10 @@ public class Controller implements Initializable {
         initBlocks();
     }
 
+    //добавление starBase
     private void initBlocks() {
         starBase = new StarBase(mainCanvas.getWidth() / 2, mainCanvas.getHeight() / 2);
         blocks.add(starBase);
-
         /*blocks.add(new Tower(
                 mainCanvas.getWidth() / 2 - 50,
                 mainCanvas.getHeight() / 2 - 50,
@@ -73,8 +74,9 @@ public class Controller implements Initializable {
         ));*/
     }
 
+
     private void onEnemyDestroy(Enemy enemy) {
-        System.out.println("killed an enemy");
+        totalEnemies += 1;
         score += enemy.maxLife;
     }
 
@@ -98,9 +100,21 @@ public class Controller implements Initializable {
         context.setFill(Color.YELLOW);
         context.setFont(Font.font("Verdana", 16));
         context.fillText(
-                String.format("score: %s", score),
+                String.format("Score: %s", score),
                 10,20
         );
+        context.fillText(
+                String.format("Enemies killed: %s", totalEnemies),
+                140,20
+        );
+        if (starBase.life <= 0){
+            context.setFill(Color.RED);
+            context.setFont(Font.font("Verdana", 45));
+            context.fillText(
+                    String.format("YOU DIED"),
+                    mainCanvas.getWidth()/3, 150
+            );
+        }
     }
 
 

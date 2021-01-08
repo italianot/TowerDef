@@ -33,9 +33,4 @@ public class LiveBlock extends Block{
         context.fillRect(x, y, life / 10, 10);
         context.strokeRect(x, y, maxLife / 10, 10);
     }
-
-
-
-
-
 }

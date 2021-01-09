@@ -10,7 +10,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -29,7 +28,8 @@ public class Controller implements Initializable {
     double timeFromLastEnemyCreate = 0;
     double enemyCreateRate = 1;
     int totalEnemies = 0;
-    int score = 500;
+    int money = 500;
+    int score = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,6 +77,7 @@ public class Controller implements Initializable {
 
     private void onEnemyDestroy(Enemy enemy) {
         totalEnemies += 1;
+        money += enemy.maxLife;
         score += enemy.maxLife;
     }
 
@@ -100,13 +101,18 @@ public class Controller implements Initializable {
         context.setFill(Color.YELLOW);
         context.setFont(Font.font("Verdana", 16));
         context.fillText(
-                String.format("Score: %s", score),
+                String.format("Money: %s", money),
                 10,20
         );
         context.fillText(
                 String.format("Enemies killed: %s", totalEnemies),
                 140,20
         );
+        context.fillText(
+                String.format("Score: %s", score),
+                330,20
+        );
+
         if (starBase.life <= 0){
             context.setFill(Color.RED);
             context.setFont(Font.font("Verdana", 45));
@@ -198,10 +204,10 @@ public class Controller implements Initializable {
     }
 
     public void onMouseClicked(MouseEvent mouseEvent) {
-        if (score < 500){
+        if (money < 500){
             return;
         }
-        score -=500;
+        money -=500;
 
         blocks.add(new Tower(
                 mouseEvent.getX(),

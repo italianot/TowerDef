@@ -11,7 +11,6 @@ public class StarBase extends LiveBlock{
         setMaxLife(1000);
     }
 
-
     @Override
     void Render(GraphicsContext context) {
         context.setFill(Color.YELLOWGREEN);

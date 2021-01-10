@@ -19,11 +19,6 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#onLeaderboardClick" prefHeight="40.0" prefWidth="150.0" text="Leaderboard">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#onRulesClick" prefHeight="40.0" prefWidth="150.0" text="Rules">
                <font>
                   <Font size="18.0" />
